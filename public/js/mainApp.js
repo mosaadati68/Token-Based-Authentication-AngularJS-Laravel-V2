@@ -9,8 +9,15 @@ myApp.config(['$routeProvider', '$locationProvider',
             templateUrl: '/templates/users/dashboard.html',
             controller: 'userController',
             authenticated: true
-        }).when('/logout', {
-            templateUrl: '/templates/users/logout.html',
+        }).when('/', {
+            templateUrl: '/templates/home.html',
+            controller: 'userController',
+            authenticated: true
+        }).when('/register', {
+            templateUrl: '/templates/users/register.html',
+            controller: 'userController'
+        }).when('/profile', {
+            templateUrl: '/templates/users/profile.html',
             controller: 'userController',
             authenticated: true
         }).otherwise('/');
