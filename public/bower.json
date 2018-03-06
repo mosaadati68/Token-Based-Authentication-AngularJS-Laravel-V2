@@ -1,0 +1,31 @@
+{
+  "name": "Token-Based_Authentication_AngularJS _Laravel",
+  "description": "Angular and Laravel Tutorial",
+  "main": "",
+  "authors": [
+    "MoSaadati <mo.saadati68@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "Angular",
+    "Laravel"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "resolutions": {
+    "angular": "^1.6.9"
+  },
+  "dependencies": {
+    "angular": "^1.6.9",
+    "satellizer": "^0.15.5",
+    "angular-ui-router": "^1.0.15",
+    "bootstrap": "^4.0.0"
+  }
+}
