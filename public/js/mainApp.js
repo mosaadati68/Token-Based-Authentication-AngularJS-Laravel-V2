@@ -34,7 +34,6 @@ myApp.run(['$rootScope', '$location', 'userModel',
                     }
                 }
                 if (next.$$route.originalPath == '/') {
-                    console.log('Login Page');
                     if (userModel.getAuthStatus()) {
                         $location.path(current.$$route.originalPath);
                     }
