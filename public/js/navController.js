@@ -1,18 +1,27 @@
-myApp.controller('navController', ['$scope','$location', 'userModel', function ($scope, $location, userModel) {
+myApp.controller('navController', ['$scope', '$location', 'userModel', function ($scope, $location, userModel) {
     angular.extend($scope, {
         user: userModel.getUserObject(),
-        navUrl: [{
+        navUrlLeft: [{
             link: 'Home',
-            url: '/dashboard',
-            submenu: [{
-                link: 'View Gallery',
-                url: '/gallery/view'
+            url: '/dashboard'
+        }, {
+            link: 'Profile',
+            url: '/profile',
+            subMenu: [{
+                link: 'View Profile',
+                url: '/profile/view'
+            }]
+        }],
+
+        navUrlRight: [{
+            link: 'Profile',
+            url: '/profile',
+            subMenu: [{
+                link: 'View Profile',
+                url: '/profile/view'
             }, {
-                link: 'Add Gallery',
-                url: '/gallery/add'
-            }, {
-                link: 'Test',
-                url: '/dashboard'
+                link: 'Logout',
+                url: '',
             }]
         }]
     });
