@@ -19,9 +19,6 @@ myApp.controller('navController', ['$scope', '$location', 'userModel', function 
             subMenu: [{
                 link: 'View Profile',
                 url: '/profile/view'
-            }, {
-                link: 'Logout',
-                url: '',
             }]
         }]
     });
