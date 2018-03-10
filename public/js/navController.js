@@ -1,7 +1,7 @@
-myApp.controller('navController', ['$scope','$location', 'userModel', function ($scope, $location, userModel) {
+myApp.controller('navController', ['$scope', '$location', 'userModel', function ($scope, $location, userModel) {
     angular.extend($scope, {
         user: userModel.getUserObject(),
-        navUrl: [{
+        navUrlLeft: [{
             link: 'Home',
             url: '/dashboard',
             submenu: [{
@@ -10,10 +10,10 @@ myApp.controller('navController', ['$scope','$location', 'userModel', function (
             }, {
                 link: 'Add Gallery',
                 url: '/gallery/add'
-            }, {
-                link: 'Test',
-                url: '/dashboard'
             }]
+        }, {
+            link: 'Test',
+            url: '/dashboard'
         }]
     });
     angular.extend($scope, {
