@@ -5,22 +5,47 @@ myApp.config(['$routeProvider', '$locationProvider',
         $routeProvider.when('/login', {
             templateUrl: '/templates/users/login.html',
             controller: 'userController'
-        }).when('/dashboard', {
+        });
+        $routeProvider.when('/dashboard', {
             templateUrl: '/templates/users/dashboard.html',
             controller: 'userController',
             authenticated: true
-        }).when('/', {
+        });
+        $routeProvider.when('/', {
             templateUrl: '/templates/home.html',
             controller: 'userController',
             authenticated: true
-        }).when('/register', {
+        });
+        $routeProvider.when('/register', {
             templateUrl: '/templates/users/register.html',
             controller: 'userController'
-        }).when('/profile', {
+        });
+        $routeProvider.when('/profile', {
             templateUrl: '/templates/users/profile.html',
             controller: 'userController',
             authenticated: true
-        }).otherwise('/');
+        });
+        $routeProvider.when('/gallery/view', {
+            templateUrl: '/templates/gallery/gallery-view.html',
+            controller: 'galleryController',
+            authenticated: true
+        });
+        $routeProvider.when('/gallery/view/:id', {
+            templateUrl: '/templates/gallery/gallery-single.html',
+            controller: 'galleryController',
+            authenticated: true
+        });
+        $routeProvider.when('/gallery/add', {
+            templateUrl: '/templates/gallery/gallery-add.html',
+            controller: 'galleryController',
+            authenticated: true
+        });
+        $routeProvider.when('/gallery/add', {
+            templateUrl: '/templates/gallery/gallery-add.html',
+            controller: 'galleryController',
+            authenticated: true
+        });
+        $routeProvider.otherwise('/');
     }
 ]);
 
@@ -41,3 +66,19 @@ myApp.run(['$rootScope', '$location', 'userModel',
             });
     }
 ]);
+
+myApp.directive('dropzone', function () {
+    return function (scope, element, attrs) {
+        var config, dropzone;
+
+        config = scope[attrs.dropzone];
+
+        // create a Dropzone for the element with the given options
+        dropzone = new Dropzone(element[0], config.options);
+
+        // bind the given event handlers
+        angular.forEach(config.eventHandlers, function (handler, event) {
+            dropzone.on(event, handler);
+        });
+    };
+});

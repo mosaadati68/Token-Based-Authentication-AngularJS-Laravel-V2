@@ -2,10 +2,16 @@
 <html ng-app="myApp">
 <head>
     <title>Angular-Laravel Authentication</title>
-    {{--<link rel="stylesheet" href="bower_components\bootstrap\bootstrap.min.css">--}}
+    <link rel="stylesheet" href="css/Main.css">
+    {{--<link rel="stylesheet" href="css/bootstrap_lumen.min.css">--}}
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="bower_components/dropzone/dist/basic.css">
+    <link rel="stylesheet" href="bower_components/dropzone/dist/dropzone.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script> var baseUrl = "{{url('/')}}/";</script>
+    <script>
+        var baseUrl = "{{url('/')}}/";
+        var csrfToken = "{{ csrf_token() }}";
+    </script>
 </head>
 <body ng-controller="globalController">
 <div class="container">
@@ -21,15 +27,17 @@
 <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
 <script type="text/javascript" src="bower_components/angular-cookies/angular-cookies.js"></script>
 <script type="text/javascript" src="bower_components/satellizer/dist/satellizer.js"></script>
+<script type="text/javascript" src="bower_components/dropzone/dist/dropzone.js"></script>
 
 <!-- Application Scripts -->
-{{--<script type="text/javascript" src="js/bootstrap.min.js"></script>--}}
 <script type="text/javascript" src="js/mainApp.js"></script>
-<script type="text/javascript" src="js/homeController.js"></script>
-<script type="text/javascript" src="js/authController.js"></script>
-<script type="text/javascript" src="js/userController.js"></script>
-<script type="text/javascript" src="js/navController.js"></script>
-<script type="text/javascript" src="js/globalController.js"></script>
-<script type="text/javascript" src="js/userModel.js"></script>
+<script type="text/javascript" src="js/controllers/homeController.js"></script>
+<script type="text/javascript" src="js/controllers/authController.js"></script>
+<script type="text/javascript" src="js/controllers/userController.js"></script>
+<script type="text/javascript" src="js/controllers/navController.js"></script>
+<script type="text/javascript" src="js/controllers/globalController.js"></script>
+<script type="text/javascript" src="js/controllers/galleryController.js"></script>
+<script type="text/javascript" src="js/models/userModel.js"></script>
+<script type="text/javascript" src="js/models/galleryModel.js"></script>
 </body>
 </html>

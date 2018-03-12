@@ -17,9 +17,14 @@ Route::get('/', function () {
 
 //Route::group(['prefix' => 'api'], function()
 //{
-    Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
-    Route::post('authenticate', 'AuthenticateController@authenticate');
-    Route::get('isauthenticate', 'AuthenticateController@authenticate');
+Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
+Route::post('authenticate', 'AuthenticateController@authenticate');
+Route::get('isauthenticate', 'AuthenticateController@authenticate');
 //    Route::post('register', 'AuthenticateController@register');
 //    Route::get('authenticate/user', 'AuthenticateController@getAuthenticatedUser');
 //});
+Route::resource('gallery', 'GalleryController');
+
+Route::post('upload-file', function (\Illuminate\Http\Request $request) {
+    return response($request->all(), 201);
+});

@@ -4,22 +4,26 @@ myApp.controller('navController', ['$scope', '$location', 'userModel', function 
         navUrlLeft: [{
             link: 'Home',
             url: '/dashboard',
-            submenu: [{
+            subMenu: [{
                 link: 'View Gallery',
                 url: '/gallery/view'
             }, {
                 link: 'Add Gallery',
                 url: '/gallery/add'
             }]
-        }, {
-            link: 'Test',
-            url: '/dashboard'
         }]
     });
+
     angular.extend($scope, {
         doLogout: function () {
             userModel.doUserLogout();
             $location.path('/');
+        },
+
+        checkActiveLink: function (routeLink) {
+            if ($location.path() == routeLink) {
+                return 'make-active';
+            }
         }
     });
 }]);
