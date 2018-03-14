@@ -25,6 +25,4 @@ Route::get('isauthenticate', 'AuthenticateController@authenticate');
 //});
 Route::resource('gallery', 'GalleryController');
 
-Route::post('upload-file', function (\Illuminate\Http\Request $request) {
-    return response($request->all(), 201);
-});
+Route::post('upload-file', 'GalleryController@uploadImage');

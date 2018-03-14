@@ -22,6 +22,7 @@ myApp.controller('galleryController', [
             newGallery: {},
             errorDiv: false,
             errorMessages: [],
+            addRemoveLinks: true,
             singleGallery: {},
             dropzoneConfig: {
                 'options': { // passed into the Dropzone constructor
