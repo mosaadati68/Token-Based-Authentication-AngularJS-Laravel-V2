@@ -24,5 +24,4 @@ Route::get('isauthenticate', 'AuthenticateController@authenticate');
 //    Route::get('authenticate/user', 'AuthenticateController@getAuthenticatedUser');
 //});
 Route::resource('gallery', 'GalleryController');
-
 Route::post('upload-file', 'GalleryController@uploadImage');
