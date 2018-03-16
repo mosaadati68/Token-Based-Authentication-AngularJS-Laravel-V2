@@ -10,7 +10,7 @@
     <img src="loader.gif" width="50" height="50"
          style="margin-top: 30%; margin-left: 50%;"></div>
 <div ng-show="showGalleries">
-    <div class="row" >
+    <div class="row">
         <div class="col-sm-12" ng-show="showGalleries">
             <h2>{{ singleGallery.name }}</h2>
             <p><i> Created by {{ singleGallery.user.name }} {{ singleGallery.created_at }}</i></p>
@@ -22,6 +22,8 @@
             <form action="/file-upload"
                   class="dropzone"
                   id="my-awesome-dropzone" dropzone="dropzoneConfig">
+                <div class="dz-message">Drop files here or click to upload.
+                </div>
             </form>
         </div>
     </div>

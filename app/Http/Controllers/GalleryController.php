@@ -104,7 +104,8 @@ class GalleryController extends Controller
 
     public function uploadImage(Request $request)
     {
-        $galleryId = $request->input('galleryId');
+
+//        $galleryId = $request->input('galleryId');
 
         if (!$request->hasFile('file')) {
             return response('No file sent', 400);
@@ -123,27 +124,7 @@ class GalleryController extends Controller
 //            return response('There are errors in the form', 400);
 //        }
 
-        $mineType = $request->file('file')->getClientMimeType();
-        $fileSize = $request->file('file')->getClientSize();
-        $fileName = 'gallery_' . $galleryId . '_' . uniqid() . '.' . $request->file('file')->getClientOriginalExtension();
-
-        $request->file('file')->move(public_path('/uploadedimages'), $fileName);
-        $file = File::create([
-            'file_name' => $fileName,
-            'mime_type' => $mineType,
-            'file_size' => $fileSize,
-            'file_path' => public_path('/uploadedimages'),
-            'type' => 'public'
-        ]);
-
-        DB::table('gallery_images')->insert([
-            'gallery_id' => $galleryId,
-            'file_id' => $file->id,
-        ]);
-
-        $fileImg = File::find($file->id);
-        $fileImg->status = 1;
-        $fileImg->save();
-        return response($file,201);
+        $fileObj = new File;
+        return $fileObj->uploadThumbAndMainImage($request);
     }
 }
