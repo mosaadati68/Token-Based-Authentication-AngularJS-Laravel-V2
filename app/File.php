@@ -12,9 +12,6 @@ class File extends Model
 {
     protected $fillable = ['file_name', 'mime_type', 'file_size', 'file_path', 'status', 'type'];
 
-//    public function file(){
-//        return $this->belongsTo('App\Gallery');
-//    }
     public function uploadThumbAndMainImage(Request $request)
     {
         $storage = Storage::disk('public');
@@ -67,22 +64,6 @@ class File extends Model
         ];
     }
 
-    public function getSingleGallery($id)
-    {
-        $gallery = Gallery::with('user')->where('id', $id)->first();
-        $gallery->images = $this->getGalleryImageUrls($id);
-        return $gallery;
-    }
-
-    private function getGalleryImageUrls($id)
-    {
-        $files = DB::table('gallery_images')
-            ->where('gallery_id', $id)
-            ->join('files', 'files_id', '=', 'gallery_images.file_id')
-            ->get();
-
-        return $files;
-    }
 }
 
 

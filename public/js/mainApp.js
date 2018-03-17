@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngCookies', 'satellizer']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngCookies', 'satellizer', 'bootstrapLightbox']);
 
 myApp.config(['$routeProvider', '$locationProvider',
     function ($routeProvider, $locationProvider) {

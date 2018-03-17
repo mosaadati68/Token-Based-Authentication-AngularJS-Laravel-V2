@@ -27,6 +27,7 @@
     "satellizer": "^0.15.5",
     "angular-ui-router": "^1.0.15",
     "bootstrap": "^4.0.0",
-    "dropzone": "^5.1.1"
+    "dropzone": "^5.1.1",
+    "angular-bootstrap-lightbox": "^0.12.0"
   }
 }

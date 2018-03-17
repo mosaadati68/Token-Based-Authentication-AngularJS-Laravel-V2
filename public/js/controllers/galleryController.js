@@ -1,6 +1,6 @@
 myApp.controller('galleryController', [
-    '$scope', '$location', 'galleryModel', '$timeout', '$routeParams',
-    function ($scope, $location, galleryModel, $timeout, $routeParams) {
+    '$scope', '$location', 'galleryModel', '$timeout', '$routeParams', 'Lightbox',
+    function ($scope, $location, galleryModel, $timeout, $routeParams, Lightbox) {
 
         galleryModel.getAllGalleries().then(function (response) {
             $timeout(function () {
@@ -13,6 +13,7 @@ myApp.controller('galleryController', [
             galleryModel.getGalleryById($routeParams.id).then(function (response) {
                 $timeout(function () {
                     $scope.singleGallery = response.data;
+                    console.log(response.data);
                     $scope.showGalleries = true;
                 }, 1000);
             });
@@ -63,6 +64,10 @@ myApp.controller('galleryController', [
 
             viewGallery: function (id) {
                 $location.path('/gallery/view/' + ' ' + id);
+            },
+
+            openLightboxModel: function (index) {
+                Lightbox.openModal($scope.singleGallery.images, index);
             }
         });
     }]);
