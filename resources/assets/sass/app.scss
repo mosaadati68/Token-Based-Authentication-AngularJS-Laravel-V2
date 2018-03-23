@@ -1,9 +1,40 @@
-
 // Fonts
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
-
 // Variables
 @import "variables";
-
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+.make-active {
+  font-weight: bold;
+}
+
+.gallery-container {
+  cursor: pointer;
+}
+
+.dropzone {
+  background: white;
+  border-radius: 5px;
+  border: 2px dashed rgb(0, 135, 247);
+  border-image: none;
+  max-width: 800px;
+  max-height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gallery-image-single {
+  position: relative;
+  .delete-icon {
+    position: relative;
+    bottom: 30px;
+    right: 40%;
+    display: none;
+  }
+  &:hover {
+    .delete-icon {
+      display: block;
+    }
+  }
+}

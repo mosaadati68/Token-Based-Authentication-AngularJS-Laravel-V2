@@ -18,10 +18,14 @@
     </div>
 
     <div class="row">
-        <div class="col-xs-3" ng-repeat="(key, value) in singleGallery.images">
+        <div class="col-xs-2 gallery-image-single" ng-repeat="(key, value) in singleGallery.images">
             <a ng-click="openLightboxModel($index)" class="thumbnail">
-                <img ng-src= "{{value.thumbUrl}}">
+                <img ng-src="{{value.thumbUrl}}">
             </a>
+            <div class="delete-icon" ng-click="deleteImage(value.file_id)">
+                <span class="fa fa-trash"></span>
+                Delete
+            </div>
         </div>
     </div>
     <div class="row">

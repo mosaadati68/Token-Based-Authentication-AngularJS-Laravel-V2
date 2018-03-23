@@ -19,6 +19,11 @@ myApp.controller('galleryController', [
             });
         }
 
+        $scope.$on('imageAdded', function (event, args) {
+            $scope.singleGallery = args;
+            $scope.$apply();
+        });
+
         angular.extend($scope, {
             newGallery: {},
             errorDiv: false,
@@ -31,13 +36,12 @@ myApp.controller('galleryController', [
                 },
                 'eventHandlers': {
                     'sending': function (file, xhr, formData) {
-                        console.log('Sending');
                         formData.append('_token', csrfToken)
                         formData.append('galleryId', $routeParams.id);
                     },
                     'success': function (file, response) {
-                        console.log('Success');
-                        console.log(response);
+                        $scope.singleGallery.images.push(response);
+                        $scope.$emit('imageAdded', $scope.singleGallery);
                     }
                 }
             }
@@ -68,6 +72,16 @@ myApp.controller('galleryController', [
 
             openLightboxModel: function (index) {
                 Lightbox.openModal($scope.singleGallery.images, index);
+            },
+            deleteImage: function (imageId) {
+                data = {
+                    imageId: imageId,
+                    galleryId: $routeParams.id
+                };
+
+                galleryModel.deleteSingleImage(data).then(function (response) {
+                    $scope.singleGallery = response.data;
+                });
             }
         });
     }]);

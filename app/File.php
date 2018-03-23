@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File as Files;
+
 class File extends Model
 {
     protected $fillable = ['file_name', 'mime_type', 'file_size', 'file_path', 'status', 'type'];
@@ -29,19 +30,21 @@ class File extends Model
         $destMediumPath = public_path("images/gallery_{$galleryId}/medium");
         $destThumbPath = public_path("images/gallery_{$galleryId}/thumb");
 
-        if(!Files::exists($destMainPath)) {
+        if (!Files::exists($destMainPath)) {
             Files::makeDirectory($destMainPath, $mode = 0777, true);
         }
 
-        if(!Files::exists($destMediumPath)) {
+        if (!Files::exists($destMediumPath)) {
             Files::makeDirectory($destMediumPath, $mode = 0777, true);
         }
 
-        if(!Files::exists($destThumbPath)) {
+        if (!Files::exists($destThumbPath)) {
             Files::makeDirectory($destThumbPath, $mode = 0777, true);
         }
         $Img = Image::make($file->getRealPath());
-        $Img->resize(800, null , function ($constraint) { $constraint->aspectRatio(); })->save($destMediumPath . '/' . $fileName);
+        $Img->resize(800, null, function ($constraint) {
+            $constraint->aspectRatio();
+        })->save($destMediumPath . '/' . $fileName);
         $Img->fit(320)->crop(320, 240, 0, 0)->save($destThumbPath . '/' . $fileName);
         $file->move($destMainPath, $fileName);
 
@@ -61,14 +64,11 @@ class File extends Model
         $fileImg->status = 1;
         $fileImg->save();
 
-        $main = url("images/gallery_{$galleryId}/main/" . $fileName);
-        $thumb = url("images/gallery_{$galleryId}/thumb/" . $fileName);
-        $medium = url("images/gallery_{$galleryId}/medium/" . $fileName);
-
-        return ['file' => $file,
-            'thumb' => $thumb,
-            'medium' => $medium,
-            'main' => $main
+        return ['file' => $fileImg,
+            'file_id' => $file->id,
+            'thumbUrl' => url("images/gallery_{$galleryId}/thumb/" . $fileName),
+            'url' => url("images/gallery_{$galleryId}/medium/" . $fileName),
+            'main' => url("images/gallery_{$galleryId}/main/" . $fileName)
         ];
     }
 

@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File as Files;
 
 class GalleryController extends Controller
 {
@@ -127,5 +128,31 @@ class GalleryController extends Controller
 
         $fileObj = new File;
         return $fileObj->uploadThumbAndMainImage($request);
+    }
+
+    public function deleteSingleImage(Request $request)
+    {
+        $imageId = $request->input('id');
+        $galleryId = $request->input('galleryId');
+        try {
+            DB::beginTransaction();
+
+            $file = File::findOrFail($imageId);
+            $file->delete();
+
+            DB::table('gallery_images')->where('file_id', $file->id)->delete();
+
+            $filePath = str_replace(url('/'), '', $file->file_path);
+            $filename = explode('/', $filePath);
+            $mainImage = public_path() . '/' . $filePath;
+            $mediumImage = public_path() . '/images/gallery_' . $galleryId . '/medium/' . end($filename);
+            $thumbImage = public_path() . '/images/gallery_' . $galleryId . '/thumb/' . end($filename);
+
+            Files::delete($mainImage, $mediumImage, $thumbImage);
+            DB::commit();
+        } catch (\PDOException $e) {
+            DB::rollBack();
+        }
+        return response($this->show($galleryId), 200);
     }
 }

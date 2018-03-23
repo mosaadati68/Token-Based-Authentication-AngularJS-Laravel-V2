@@ -1,7 +1,7 @@
-myApp.factory('galleryModel' , ['$http', function ($http) {
+myApp.factory('galleryModel', ['$http', function ($http) {
     return {
-        saveGallery : function (galleryData) {
-            return $http ({
+        saveGallery: function (galleryData) {
+            return $http({
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -16,8 +16,22 @@ myApp.factory('galleryModel' , ['$http', function ($http) {
         getAllGalleries: function () {
             return $http.get(baseUrl + 'gallery');
         },
-        getGalleryById : function (id) {
+        getGalleryById: function (id) {
             return $http.get(baseUrl + 'gallery/' + id);
+        },
+
+        deleteSingleImage: function (data) {
+            return $http({
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: baseUrl + 'delete-single-image',
+                method: 'POST',
+                data: {
+                    id: data.imageId,
+                    galleryId : data.galleryId
+                }
+            });
         }
     };
 }])
