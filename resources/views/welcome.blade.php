@@ -7,6 +7,7 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="bower_components/dropzone/dist/basic.css">
     <link rel="stylesheet" href="bower_components/dropzone/dist/dropzone.css">
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.min.css">
     <link rel="stylesheet" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css">
     <link rel="stylesheet" href="bower_components/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -28,12 +29,13 @@
 <script type="text/javascript" src="bower_components/angular-animate/angular-animate.js"></script>
 <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
 
-<script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <script type="text/javascript" src="bower_components/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.min.js"></script>
 <script type="text/javascript" src="bower_components/angular-cookies/angular-cookies.js"></script>
 <script type="text/javascript" src="bower_components/satellizer/dist/satellizer.js"></script>
 <script type="text/javascript" src="bower_components/dropzone/dist/dropzone.js"></script>
+<script type="text/javascript" src="bower_components/angular-loading-bar/build/loading-bar.min.js"></script>
 
 <!-- Application Scripts -->
 <script type="text/javascript" src="js/mainApp.js"></script>

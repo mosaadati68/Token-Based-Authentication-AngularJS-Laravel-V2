@@ -1,7 +1,7 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngCookies', 'satellizer', 'bootstrapLightbox']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngCookies', 'satellizer', 'bootstrapLightbox', 'angular-loading-bar']);
 
-myApp.config(['$routeProvider', '$locationProvider',
-    function ($routeProvider, $locationProvider) {
+myApp.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider',
+    function ($routeProvider, $locationProvider, cfpLoadingBarProvider) {
         $routeProvider.when('/login', {
             templateUrl: '/templates/users/login.html',
             controller: 'userController'
@@ -46,6 +46,7 @@ myApp.config(['$routeProvider', '$locationProvider',
             authenticated: true
         });
         $routeProvider.otherwise('/');
+        cfpLoadingBarProvider.includeSpinner  = false;
     }
 ]);
 

@@ -41,9 +41,9 @@ class Gallery extends Model
 
         foreach ($files as $key => $file) {
             $finalData[$key] = [
-                $thumbUrl = Storage::disk('public')->url("gallery_{$id}/main/" . $file->file_name),
-                $main = Storage::disk('public')->url("gallery_{$id}/medium/" . $file->file_name),
-                $url = Storage::disk('public')->url("gallery_{$id}/thumb/" . $file->file_name),
+                'thumbUrl' => url("images/gallery_{$id}/main/" . $file->file_name),
+                'main' => url("images/gallery_{$id}/medium/" . $file->file_name),
+               'url' => url("images/gallery_{$id}/thumb/" . $file->file_name),
             ];
         }
         return $finalData;

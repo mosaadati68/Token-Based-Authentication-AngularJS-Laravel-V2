@@ -17,7 +17,7 @@ myApp.factory('userModel', ['$http', '$cookies', function ($http, $cookies) {
                 password: loginData.password
             }
         }).then(function (response) {
-            console.log(response.data.user);
+            // console.log(response.data.user);
             $cookies.put('auth', JSON.stringify(response.data.user));
         });
     };

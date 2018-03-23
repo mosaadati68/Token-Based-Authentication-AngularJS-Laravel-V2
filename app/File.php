@@ -7,11 +7,14 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\File as Files;
 class File extends Model
 {
     protected $fillable = ['file_name', 'mime_type', 'file_size', 'file_path', 'status', 'type'];
 
+    /**
+     * @param Request $request
+     */
     public function uploadThumbAndMainImage(Request $request)
     {
         $storage = Storage::disk('public');
@@ -21,29 +24,34 @@ class File extends Model
         $mineType = $request->file('file')->getClientMimeType();
         $fileSize = $request->file('file')->getClientSize();
         $galleryId = $request->input('galleryId');
-        $image = Image::make($file);
-        $imageThumb = Image::make($file)->fit(320)->crop(320, 240, 0, 0);
-        $imageMedium = Image::make($file)->resize(800, null, function ($constraint) {
-            $constraint->aspectRatio();
-        });
 
-//        $imageThumb->encode($extension);
-//        $imageMedium->encode($extension);
-//        $image->encode($extension);
+        $destMainPath = public_path("images/gallery_{$galleryId}/main");
+        $destMediumPath = public_path("images/gallery_{$galleryId}/medium");
+        $destThumbPath = public_path("images/gallery_{$galleryId}/thumb");
 
-        $storage->put("gallery_{$galleryId}/main/" . $fileName, (string)$image);
-        $storage->put("gallery_{$galleryId}/medium/" . $fileName, (string)$imageMedium);
-        $storage->put("gallery_{$galleryId}/thumb/" . $fileName, (string)$imageThumb);
+        if(!Files::exists($destMainPath)) {
+            Files::makeDirectory($destMainPath, $mode = 0777, true);
+        }
+
+        if(!Files::exists($destMediumPath)) {
+            Files::makeDirectory($destMediumPath, $mode = 0777, true);
+        }
+
+        if(!Files::exists($destThumbPath)) {
+            Files::makeDirectory($destThumbPath, $mode = 0777, true);
+        }
+        $Img = Image::make($file->getRealPath());
+        $Img->resize(800, null , function ($constraint) { $constraint->aspectRatio(); })->save($destMediumPath . '/' . $fileName);
+        $Img->fit(320)->crop(320, 240, 0, 0)->save($destThumbPath . '/' . $fileName);
+        $file->move($destMainPath, $fileName);
 
         $file = File::create([
             'file_name' => $fileName,
             'mime_type' => $mineType,
             'file_size' => $fileSize,
-            'file_path' => Storage::disk('public')->url("gallery_{$galleryId}/main/" . $fileName),
+            'file_path' => url("images/gallery_{$galleryId}/main/" . $fileName),
             'type' => 'local'
         ]);
-
-
         DB::table('gallery_images')->insert([
             'gallery_id' => $galleryId,
             'file_id' => $file->id,
@@ -53,9 +61,9 @@ class File extends Model
         $fileImg->status = 1;
         $fileImg->save();
 
-        $thumb = Storage::disk('public')->url("gallery_{$galleryId}/main/" . $fileName);
-        $main = Storage::disk('public')->url("gallery_{$galleryId}/medium/" . $fileName);
-        $medium = Storage::disk('public')->url("gallery_{$galleryId}/thumb/" . $fileName);
+        $main = url("images/gallery_{$galleryId}/main/" . $fileName);
+        $thumb = url("images/gallery_{$galleryId}/thumb/" . $fileName);
+        $medium = url("images/gallery_{$galleryId}/medium/" . $fileName);
 
         return ['file' => $file,
             'thumb' => $thumb,

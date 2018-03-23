@@ -13,7 +13,7 @@ myApp.controller('galleryController', [
             galleryModel.getGalleryById($routeParams.id).then(function (response) {
                 $timeout(function () {
                     $scope.singleGallery = response.data;
-                    console.log(response.data);
+                    // console.log(response.data);
                     $scope.showGalleries = true;
                 }, 1000);
             });
@@ -63,7 +63,7 @@ myApp.controller('galleryController', [
             },
 
             viewGallery: function (id) {
-                $location.path('/gallery/view/' + ' ' + id);
+                $location.path('/gallery/view/' + id);
             },
 
             openLightboxModel: function (index) {
