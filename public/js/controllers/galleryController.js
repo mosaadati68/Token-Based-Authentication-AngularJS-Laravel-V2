@@ -81,6 +81,7 @@ myApp.controller('galleryController', [
 
                 galleryModel.deleteSingleImage(data).then(function (response) {
                     $scope.singleGallery = response.data;
+                    console.log('gdg');
                 });
             }
         });
