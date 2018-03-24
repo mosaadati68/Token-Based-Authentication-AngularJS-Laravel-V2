@@ -65,50 +65,55 @@
         border: 1px solid #ddd;
     }
 </style>
-<nav class="navbar navbar-inverse" ng-controller="navController">
-    <div class="navbar-header">
-        <button class="navbar-toggle" type="button"
-                data-toggle="collapse" data-target=".js-navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">My Store</a>
-    </div>
+<div class="container">
+    <nav class="navbar navbar-inverse" ng-controller="navController">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button"
+                    data-toggle="collapse" data-target=".js-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">My Store</a>
+        </div>
 
-    <div class="collapse navbar-collapse js-navbar-collapse">
-        <ul class="nav navbar-nav">
-            <li ng-repeat="linkLeft in navUrlLeft">
-                <a href="#!{{ link.url }}" ng-hide="linkLeft.subMenu" ng-class="checkActiveLink(link.url)">{{
-                    linkLeft.link }}</a>
-                <a href="javascript:void(0)" ng-show="linkLeft.subMenu" class="dropdown-toggle" data-toggle="dropdown"
-                   role="button"
-                   aria-expanded="false" aria-haspopup="true">{{linkLeft.link}} <span class="caret"></span></a>
-                <ul class="dropdown-menu" ng-show="linkLeft.subMenu" role="menu">
-                    <li ng-repeat="sublink in linkLeft.subMenu"><a href="#!{{sublink.url}}" ng-class="checkActiveLink(link.url)"> {{sublink.link}} </a></li>
-                </ul>
-            </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li ng-show="user">
-                <a href="javascript:void(0)">{{ user.name }}</a>
-                <ul class="dropdown-menu" role="menu">
-                    <!--<li ng-repeat="sublink in linkRight.subMenu"><a href="#!{{sublink.url}}"> {{sublink.link}} </a></li>-->
-                    <li><a href="javascript:void(0)" ng-click="doLogout()">Logout</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
-                </ul>
-            </li>
-            <li ng-hide="user"><a href="#!register"><span class="fa fa-sign-in"></span> Sign Up</a></li>
-            <li ng-hide="user"><a href="#!login"><span class="fa fa-lock"></span> Login</a></li>
-            <li ng-show="user"><a href="javascript:void(0)" ng-click="doLogout()">Logout</a></li>
+        <div class="collapse navbar-collapse js-navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li ng-repeat="linkLeft in navUrlLeft">
+                    <a href="#!{{ link.url }}" ng-hide="linkLeft.subMenu" ng-class="checkActiveLink(link.url)">{{
+                        linkLeft.link }}</a>
+                    <a href="javascript:void(0)" ng-show="linkLeft.subMenu" class="dropdown-toggle"
+                       data-toggle="dropdown"
+                       role="button"
+                       aria-expanded="false" aria-haspopup="true">{{linkLeft.link}} <span class="caret"></span></a>
+                    <ul class="dropdown-menu" ng-show="linkLeft.subMenu" role="menu">
+                        <li ng-repeat="sublink in linkLeft.subMenu"><a href="#!{{sublink.url}}"
+                                                                       ng-class="checkActiveLink(link.url)">
+                            {{sublink.link}} </a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-show="user">
+                    <a href="javascript:void(0)">{{ user.name }}</a>
+                    <ul class="dropdown-menu" role="menu">
+                        <!--<li ng-repeat="sublink in linkRight.subMenu"><a href="#!{{sublink.url}}"> {{sublink.link}} </a></li>-->
+                        <li><a href="javascript:void(0)" ng-click="doLogout()">Logout</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </li>
+                <li ng-hide="user"><a href="#!register"><span class="fa fa-sign-in"></span> Sign Up</a></li>
+                <li ng-hide="user"><a href="#!login"><span class="fa fa-lock"></span> Login</a></li>
+                <li ng-show="user"><a href="javascript:void(0)" ng-click="doLogout()">Logout</a></li>
 
-            <li ng-show="user"><a href="javascript:void(0)">My cart (0) items</a></li>
-        </ul>
+                <li ng-show="user"><a href="javascript:void(0)">My cart (0) items</a></li>
+            </ul>
 
-    </div><!-- /.nav-collapse -->
-</nav>
+        </div><!-- /.nav-collapse -->
+    </nav>
+</div>
 
 <script type="text/javascript">
     $(document).ready(function () {

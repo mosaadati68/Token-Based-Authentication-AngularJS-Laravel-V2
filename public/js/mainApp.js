@@ -25,6 +25,11 @@ myApp.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider',
             controller: 'userController',
             authenticated: true
         });
+        $routeProvider.when('/cart', {
+            templateUrl: '/templates/cart.html',
+            controller: 'userController',
+            authenticated: true
+        });
         $routeProvider.when('/gallery/view', {
             templateUrl: '/templates/gallery/gallery-view.html',
             controller: 'galleryController',

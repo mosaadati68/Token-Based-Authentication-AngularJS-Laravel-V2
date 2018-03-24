@@ -26,3 +26,5 @@ Route::get('isauthenticate', 'AuthenticateController@authenticate');
 Route::resource('gallery', 'GalleryController');
 Route::post('upload-file', 'GalleryController@uploadImage');
 Route::post('delete-single-image', 'GalleryController@deleteSingleImage');
+
+Route::get('products', 'ProductController@index');
