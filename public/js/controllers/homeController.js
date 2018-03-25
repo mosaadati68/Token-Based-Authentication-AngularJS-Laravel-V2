@@ -20,13 +20,11 @@ myApp.controller('homeController', [
                             output.push(country);
                         }
                     });
-                    console.log(output);
                     $scope.filterCountry = output;
 
                 }
                 $scope.fillTextbox=function(string, image){
                     $scope.country = string;
-                    $scope.image = image;
                     $scope.filterCountry=null;
                 }
             }, 1000);

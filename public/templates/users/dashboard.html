@@ -7,10 +7,11 @@
                class="form-control"/>
         <ul class="list-group">
             <li class="list-group-item" ng-repeat="countrydata in filterCountry"
-                ng-click="fillTextbox(countrydata.product_name, countrydata.product_pic)">
+                ng-click="fillTextbox(countrydata.product_name)">
                 <img src="{{countrydata.product_pic}}" width="20" height="20" style="border-radius: 3px;"/>
                 {{countrydata.product_name}}
             </li>
         </ul>
+        {{country}}
     </div>
 </div>
