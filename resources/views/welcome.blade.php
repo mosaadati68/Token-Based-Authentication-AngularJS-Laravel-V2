@@ -46,6 +46,7 @@
 <script type="text/javascript" src="js/controllers/globalController.js"></script>
 <script type="text/javascript" src="js/controllers/galleryController.js"></script>
 <script type="text/javascript" src="js/models/userModel.js"></script>
+<script type="text/javascript" src="js/models/productModel.js"></script>
 <script type="text/javascript" src="js/models/galleryModel.js"></script>
 </body>
 </html>

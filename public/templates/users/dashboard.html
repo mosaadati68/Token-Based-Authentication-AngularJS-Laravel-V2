@@ -1,2 +1,16 @@
 <div ng-include="global.navUrl"></div>
-Dashboard Page
+<div class="container col-md-6">
+    <div ng-init="loadCountry()">
+        <h3 align="center">AngularJS Autocomplete Textbox</h3>
+        <label>Enter Country Name</label>
+        <input type="text" name="country" id="country" ng-model="country" ng-keyup="complete(country)"
+               class="form-control"/>
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="countrydata in filterCountry"
+                ng-click="fillTextbox(countrydata)"><img src="{{productPics[$index]}}" width="20" height="20" style="border-radius: 3px;"/>
+                {{countrydata}}
+            </li>
+        </ul>
+        {{country}}
+    </div>
+</div>

@@ -8,7 +8,7 @@ myApp.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider',
         });
         $routeProvider.when('/dashboard', {
             templateUrl: '/templates/users/dashboard.html',
-            controller: 'userController',
+            controller: 'homeController',
             authenticated: true
         });
         $routeProvider.when('/', {
