@@ -6,26 +6,28 @@ myApp.controller('homeController', [
             $timeout(function () {
                 var productName = [];
                 var productPic = [];
-                angular.forEach(response.data, function (country) {
-                   productName.push(country.product_name);
-                   productPic.push(country.product_pic);
+                angular.forEach(response.data, function (product) {
+                    productName.push(product.product_name);
+                    productPic.push(product.product_pic);
                 });
-                console.log(productName,productPic);
                 $scope.countryList = productName;
-                $scope.productPics = productPic;
-                $scope.complete = function (string) {
+                $scope.productPic = productPic;
+                $scope.complete=function(string){
 
-                    var output = [];
-                    angular.forEach($scope.countryList, function (country) {
-                        if (country.toLowerCase().indexOf(string.toLowerCase()) >= 0) {
+                    var output=[];
+                    angular.forEach(response.data, function(country){
+                        if(country.product_name.toLowerCase().indexOf(string.toLowerCase())>=0){
                             output.push(country);
                         }
                     });
+                    console.log(output);
                     $scope.filterCountry = output;
+
                 }
-                $scope.fillTextbox = function (string) {
+                $scope.fillTextbox=function(string, image){
                     $scope.country = string;
-                    $scope.filterCountry = null;
+                    $scope.image = image;
+                    $scope.filterCountry=null;
                 }
             }, 1000);
         });
