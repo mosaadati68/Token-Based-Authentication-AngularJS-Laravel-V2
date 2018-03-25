@@ -28,3 +28,5 @@ Route::post('upload-file', 'GalleryController@uploadImage');
 Route::post('delete-single-image', 'GalleryController@deleteSingleImage');
 
 Route::get('products', 'ProductController@index');
+Route::post('cart', 'CartController@addCart');
+Route::get('showCart', 'CartController@showCart');

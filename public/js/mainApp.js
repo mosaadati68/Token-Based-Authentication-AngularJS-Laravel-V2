@@ -13,8 +13,8 @@ myApp.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider',
         });
         $routeProvider.when('/', {
             templateUrl: '/templates/home.html',
-            controller: 'userController',
-            authenticated: true
+            controller: 'homeController',
+            // authenticated: true
         });
         $routeProvider.when('/register', {
             templateUrl: '/templates/users/register.html',
@@ -26,8 +26,8 @@ myApp.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider',
             authenticated: true
         });
         $routeProvider.when('/cart', {
-            templateUrl: '/templates/cart.html',
-            controller: 'userController',
+            templateUrl: '/templates/users/cart.html',
+            controller: 'cartController',
             authenticated: true
         });
         $routeProvider.when('/gallery/view', {

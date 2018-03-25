@@ -45,8 +45,10 @@
 <script type="text/javascript" src="js/controllers/navController.js"></script>
 <script type="text/javascript" src="js/controllers/globalController.js"></script>
 <script type="text/javascript" src="js/controllers/galleryController.js"></script>
+<script type="text/javascript" src="js/controllers/cartController.js"></script>
 <script type="text/javascript" src="js/models/userModel.js"></script>
 <script type="text/javascript" src="js/models/productModel.js"></script>
 <script type="text/javascript" src="js/models/galleryModel.js"></script>
+<script type="text/javascript" src="js/models/cartModel.js"></script>
 </body>
 </html>
