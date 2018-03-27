@@ -17,11 +17,12 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat = "item in items">
+            <tr ng-repeat="item in items">
                 <td class="col-sm-6 col-md-4">
                     <div class="media">
                         <a class="thumbnail" href="#" style="margin-right: 5px; width: 72px; height: 82px;">
-                            <img class="media-object" src="{{item.options.productImage}}" style="width: 72px; height: 72px;">
+                            <img class="media-object" src="{{item.options.productImage}}"
+                                 style="width: 72px; height: 72px;">
                         </a>
                         <div class="media-body">
                             <h4 class="media-heading"><a href="#">{{item.name}}</a></h4>
@@ -31,13 +32,15 @@
                     </div>
                 </td>
                 <td class="col-sm-1 col-md-1" style="text-align: center">
-                    <input type="email" class="form-control" id="exampleInputEmail1" value="{{item.qty}}">
+                     <input type="email" class="form-control" id="exampleInputEmail1" value="{{item.qty}}">
                 </td>
                 <td class="col-sm-2 col-md-2 text-center"><strong>$ {{item.price}}</strong></td>
                 <td class="col-sm-1 col-md-1 text-center"><strong>$ {{item.subtotal}}</strong></td>
                 <td class="col-sm-1 col-md-1">
-                    <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
-                    <button class="btn btn-danger btn-sm" ng-click="deleteItemCart(item.rowId)"><i class="fa fa-trash-o"></i></button>
+                    <button class="btn btn-info btn-sm" ng-click="UpdateItemCart(item.rowId)">
+                           <i class="fa fa-refresh"></i></button>
+                    <button class="btn btn-danger btn-sm" ng-click="deleteItemCart(item.rowId)">
+                           <i class="fa fa-trash-o"></i></button>
                 </td>
             </tr>
             <tr>
@@ -45,7 +48,7 @@
                 <td>  </td>
                 <td>  </td>
                 <td><h5>Subtotal</h5></td>
-                <td class="text-right"><h5><strong>$24.59</strong></h5></td>
+                <td class="text-right"><h5><strong>$ {{item.subtotal}}</strong></h5></td>
             </tr>
             <tr>
                 <td>  </td>

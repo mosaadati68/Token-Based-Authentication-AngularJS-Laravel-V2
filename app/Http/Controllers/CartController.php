@@ -78,9 +78,11 @@ class CartController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateCart(Request $request)
     {
-        //
+        return response($request->input('qty'));
+//        Cart::update($request->input('rowId'), $request->input('qty')); // Will update the quantity
+//        return response('Item Update From Cart');
     }
 
     /**

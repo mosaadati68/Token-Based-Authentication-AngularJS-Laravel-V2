@@ -15,6 +15,20 @@ myApp.factory('cartModel', ['$http', function ($http) {
                 }
             });
 
+        },
+        updateItem:function (data) {
+            return $http({
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: baseUrl + 'updateCartItem',
+                method: 'POST',
+                data: {
+                    rowId: data.rowId,
+                    qty: data.qty
+                }
+            });
+
         }
     }
 }]);
