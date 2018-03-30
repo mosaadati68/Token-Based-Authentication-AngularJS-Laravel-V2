@@ -6,6 +6,7 @@
     {{--<link rel="stylesheet" href="css/bootstrap_lumen.min.css">--}}
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="bower_components/dropzone/dist/basic.css">
+    {{--<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">--}}
     <link rel="stylesheet" href="bower_components/dropzone/dist/dropzone.css">
     <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.min.css">
     <link rel="stylesheet" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css">

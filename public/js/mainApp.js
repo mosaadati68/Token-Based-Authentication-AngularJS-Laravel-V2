@@ -14,7 +14,7 @@ myApp.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider',
         $routeProvider.when('/', {
             templateUrl: '/templates/home.html',
             controller: 'homeController',
-            // authenticated: true
+            authenticated: true
         });
         $routeProvider.when('/register', {
             templateUrl: '/templates/users/register.html',
@@ -23,6 +23,11 @@ myApp.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider',
         $routeProvider.when('/profile', {
             templateUrl: '/templates/users/profile.html',
             controller: 'userController',
+            authenticated: true
+        });
+        $routeProvider.when('/timeline', {
+            templateUrl: '/templates/users/timeline.html',
+            controller: 'dashboardController',
             authenticated: true
         });
         $routeProvider.when('/cart', {
