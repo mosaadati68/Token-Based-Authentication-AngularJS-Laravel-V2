@@ -1,57 +1,30 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngCookies', 'satellizer', 'bootstrapLightbox', 'angular-loading-bar']);
+var myApp = angular.module('myApp', [
+    'ngRoute',
+    'ngCookies',
+    'satellizer',
+    'bootstrapLightbox',
+    'angular-loading-bar',
+    'ngMaterial',
+    'mdSteppers']);
 
-myApp.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider',
-    function ($routeProvider, $locationProvider, cfpLoadingBarProvider) {
-        $routeProvider.when('/login', {
-            templateUrl: '/templates/users/login.html',
-            controller: 'userController'
-        });
-        $routeProvider.when('/dashboard', {
-            templateUrl: '/templates/users/dashboard.html',
-            controller: 'homeController',
-            authenticated: true
-        });
-        $routeProvider.when('/', {
-            templateUrl: '/templates/home.html',
-            controller: 'homeController',
-            // authenticated: true
-        });
-        $routeProvider.when('/register', {
-            templateUrl: '/templates/users/register.html',
-            controller: 'userController'
-        });
-        $routeProvider.when('/profile', {
-            templateUrl: '/templates/users/profile.html',
-            controller: 'userController',
-            authenticated: true
-        });
-        $routeProvider.when('/cart', {
-            templateUrl: '/templates/users/cart.html',
-            controller: 'cartController',
-            authenticated: true
-        });
-        $routeProvider.when('/gallery/view', {
-            templateUrl: '/templates/gallery/gallery-view.html',
-            controller: 'galleryController',
-            authenticated: true
-        });
-        $routeProvider.when('/gallery/view/:id', {
-            templateUrl: '/templates/gallery/gallery-single.html',
-            controller: 'galleryController',
-            authenticated: true
-        });
-        $routeProvider.when('/gallery/add', {
-            templateUrl: '/templates/gallery/gallery-add.html',
-            controller: 'galleryController',
-            authenticated: true
-        });
-        $routeProvider.when('/gallery/add', {
-            templateUrl: '/templates/gallery/gallery-add.html',
-            controller: 'galleryController',
-            authenticated: true
-        });
+myApp.config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider', '$mdThemingProvider',
+    function ($routeProvider, $locationProvider, cfpLoadingBarProvider, $mdThemingProvider) {
+        $routeProvider.when('/login', { templateUrl: '/templates/users/login.html', controller: 'userController' });
+        $routeProvider.when('/dashboard', { templateUrl: '/templates/users/dashboard.html', controller: 'homeController', authenticated: true });
+        $routeProvider.when('/', { templateUrl: '/templates/home.html', controller: 'homeController' });
+        $routeProvider.when('/register', { templateUrl: '/templates/users/register.html', controller: 'userController' });
+        $routeProvider.when('/profile', { templateUrl: '/templates/users/profile.html', controller: 'userController', authenticated: true });
+        $routeProvider.when('/cart', { templateUrl: '/templates/users/cart.html',controller: 'cartController', authenticated: true });
+        $routeProvider.when('/gallery/view', { templateUrl: '/templates/gallery/gallery-view.html', controller: 'galleryController', authenticated: true });
+        $routeProvider.when('/gallery/view/:id', { templateUrl: '/templates/gallery/gallery-single.html', controller: 'galleryController', authenticated: true });
+        $routeProvider.when('/gallery/add', { templateUrl: '/templates/gallery/gallery-add.html', controller: 'galleryController', authenticated: true });
+        $routeProvider.when('/gallery/add', { templateUrl: '/templates/gallery/gallery-add.html',controller: 'galleryController', authenticated: true });
+        $routeProvider.when('/material', { templateUrl: '/templates/material/material.html',controller: 'materialController', authenticated: true });
         $routeProvider.otherwise('/');
         cfpLoadingBarProvider.includeSpinner  = false;
+        $mdThemingProvider.theme('default')
+            .primaryPalette('blue')
+            .accentPalette('red');
     }
 ]);
 
@@ -72,7 +45,6 @@ myApp.run(['$rootScope', '$location', 'userModel',
             });
     }
 ]);
-
 myApp.directive('dropzone', function () {
     return function (scope, element, attrs) {
         var config, dropzone;
