@@ -2,7 +2,7 @@ myApp.controller('userController', ['$scope', '$location', 'userModel',
     function ($scope, $location, userModel) {
         angular.extend($scope, {
             login: {
-                username: 'chris@scotch.io',
+                username: 'mo.saadati68@gmail.com',
                 password: 'secret'
             }
         });

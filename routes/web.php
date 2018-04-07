@@ -32,3 +32,4 @@ Route::post('cart', 'CartController@addCart');
 Route::get('showCart', 'CartController@showCart');
 Route::post('deleteCartItem', 'CartController@deleteCart');
 Route::post('updateCartItem', 'CartController@updateCart');
+Route::get('countCart', 'CartController@countCart');

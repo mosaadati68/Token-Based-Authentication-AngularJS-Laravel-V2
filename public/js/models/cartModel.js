@@ -3,7 +3,25 @@ myApp.factory('cartModel', ['$http', function ($http) {
         getAllCart: function () {
             return $http.get(baseUrl + 'showCart');
         },
-        deleteItem:function (data) {
+
+        addToCart: function (data) {
+            return $http({
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: baseUrl + 'cart',
+                method: 'POST',
+                data: {
+                    id: data.productId,
+                }
+            });
+        },
+
+        getCountCart: function () {
+            return $http.get(baseUrl + 'countCart');
+        },
+
+        deleteItem: function (data) {
             return $http({
                 headers: {
                     'Content-Type': 'application/json'
@@ -16,7 +34,8 @@ myApp.factory('cartModel', ['$http', function ($http) {
             });
 
         },
-        updateItem:function (data) {
+
+        updateItem: function (data) {
             return $http({
                 headers: {
                     'Content-Type': 'application/json'
@@ -25,7 +44,7 @@ myApp.factory('cartModel', ['$http', function ($http) {
                 method: 'POST',
                 data: {
                     rowId: data.rowId,
-                    qty: data.qty
+                    type: data.type
                 }
             });
 

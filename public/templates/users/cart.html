@@ -4,7 +4,7 @@
     <strong>Success! </strong>
     {{messages}}
 </div>
-<div class="row">
+<div class="row" >
     <div class="col-sm-12 col-md-10 col-md-offset-1">
         <table class="table table-hover">
             <thead>
@@ -12,7 +12,7 @@
                 <th>Product</th>
                 <th>Quantity</th>
                 <th class="text-center">Price</th>
-                <th class="text-center">Total</th>
+                <th class="text-center">Subtotal</th>
                 <th> </th>
             </tr>
             </thead>
@@ -31,9 +31,17 @@
                         </div>
                     </div>
                 </td>
-                <td class="col-sm-1 col-md-1" style="text-align: center">
-                     <input type="email" class="form-control" id="exampleInputEmail1" value="{{item.qty}}">
+
+                <td class="cart_quantity">
+                    <div class="cart_quantity_button">
+                        <a class="cart_quantity_up" href="" ng-click="updateCartItem(item.rowId, 1)"> + </a>
+                        <input class="cart_quantity_input" type="text" name="quantity" value="{{item.qty}}" autocomplete="off" size="2">
+                        <a class="cart_quantity_down" href="" ng-click="updateCartItem(item.rowId, -1)"> - </a>
+                    </div>
                 </td>
+                <!--<td class="col-sm-1 col-md-1" style="text-align: center">-->
+                     <!--<input type="email" class="form-control" id="exampleInputEmail1" value="{{item.qty}}">-->
+                <!--</td>-->
                 <td class="col-sm-2 col-md-2 text-center"><strong>$ {{item.price}}</strong></td>
                 <td class="col-sm-1 col-md-1 text-center"><strong>$ {{item.subtotal}}</strong></td>
                 <td class="col-sm-1 col-md-1">
@@ -47,8 +55,8 @@
                 <td>  </td>
                 <td>  </td>
                 <td>  </td>
-                <td><h5>Subtotal</h5></td>
-                <td class="text-right"><h5><strong>$ {{item.subtotal}}</strong></h5></td>
+                <td><h5>Total</h5></td>
+                <td class="text-right"><h5><strong>$ {{subtotal}}</strong></h5></td>
             </tr>
             <tr>
                 <td>  </td>
@@ -82,6 +90,7 @@
             </tbody>
         </table>
     </div>
+
     <script>
         window.setTimeout(function () {
             $(".alert-success").fadeTo(1000, 0).slideUp(1000, function () {
